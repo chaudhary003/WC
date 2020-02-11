@@ -10,7 +10,7 @@
   <!-- Custom -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <title>ReaLEstate</title>
+    <title>ReaLEstate{% block title %}{% endblock %}</title>
   </head>
   <body>
      {% include 'partials/topbar.html' %}

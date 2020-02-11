@@ -10,15 +10,18 @@ def login(request):
         if user is not None:
             auth.login(request,user)
             messages.success(request,'you are now logged in')
-            return redirect('dashboard')
+            return redirect('home')
         else:
-            messages.info(request,'invalid credantials')
+            messages.error(request,'invalid credantials')
             return redirect('login')
         #return redirect('login')
     else:
         return render(request,'accounts/login.html')
 def logout(request):
-    return redirect('home')
+    if request.method=='POST':
+        auth.logout(request)
+        messages.success(request,'logout successfully')
+        return redirect('home')
 def dashboard(request):
     return render(request,'accounts/dashboard.html')
 def register(request):
